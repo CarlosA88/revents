@@ -1,12 +1,12 @@
-
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class App extends Component {
   render() {
     return (
       <div>
-        <div className="App">
+        <div>
           <h1>Re-vents</h1>
+          
         </div>
       </div>
     );
@@ -14,4 +14,3 @@ class App extends Component {
 }
 
 export default App;
-
