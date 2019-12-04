@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import EventDashboard from "../../features/event/eventDashboard/eventDashboard";
+import Navbar from "../../features/nav/Navbar/Navbar";
 
 class App extends Component {
   render() {
@@ -6,7 +8,9 @@ class App extends Component {
       <div>
         <div>
           <h1>Re-vents</h1>
-          
+          <Navbar />
+          <EventDashboard />
+
         </div>
       </div>
     );

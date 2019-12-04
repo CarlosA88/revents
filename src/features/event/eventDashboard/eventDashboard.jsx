@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Grid } from "semantic-ui-react";
 
-export default class eventDashboard extends Component {
+export default class EventDashboard extends Component {
   render() {
     return (
       <div>
