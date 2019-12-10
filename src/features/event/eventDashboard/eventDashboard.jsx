@@ -13,6 +13,7 @@ class EventDashboard extends Component {
   openFormHandler = () => {
     this.setState(({ isOpen }) => ({ isOpen: !isOpen }));
   };
+
   render() {
     const { events, isOpen } = this.state;
     return (

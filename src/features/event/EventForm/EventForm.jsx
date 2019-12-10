@@ -2,14 +2,34 @@ import React, { Component } from "react";
 import { Segment, Form, Button } from "semantic-ui-react";
 
 class EventForm extends Component {
+  state = {
+    title: ""
+  };
+
+  submitDataHandler = event => {
+    event.preventDefault();
+    console.log(this.state.title);
+  };
+
+  onChangeHandler = event => {
+    event.preventDefault();
+    this.setState({ title: event.target.value });
+  };
+
   render() {
     const { cancelEventForm } = this.props;
+    const { title } = this.state;
     return (
       <Segment>
-        <Form>
+        <Form onSubmit={this.submitDataHandler}>
           <Form.Field>
             <label>Event Title</label>
-            <input placeholder="First Name" />
+            <input
+              placeholder="First Name"
+              onChange={this.onChangeHandler}
+              value={title}
+              name={title}
+            />
           </Form.Field>
           <Form.Field>
             <label>Event Date</label>
