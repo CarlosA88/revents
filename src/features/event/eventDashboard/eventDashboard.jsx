@@ -8,40 +8,61 @@ import cuid from "cuid";
 class EventDashboard extends Component {
   state = {
     events: eventsFromDashboard,
-    isOpen: false
+    isOpen: false,
+    selectedEvent: null
   };
 
-  openFormHandler = () => {
-    this.setState(({ isOpen }) => ({ isOpen: !isOpen }));
-  };
+  // openFormHandler = () => {
+  //   this.setState( ( { isOpen } ) => ( { isOpen: !isOpen } ) );
+  // };
+
+  handleCreateFormOpen = () => {
+    this.setState( {
+      isOpen: true,
+      selectedEvent: null
+    } )
+  }
+
+  handleFormCancel = () => {
+    this.setState( {
+      isOpen: false
+    } )
+  }
 
   handleCreateEvent = newEvent => {
-    debugger;
     newEvent.id = cuid();
     newEvent.hostPhotoURL = "/assets/user.png";
-    this.setState(({ events }) => ({
+    this.setState( ( { events } ) => ( {
       events: [...events, newEvent],
       isOpen: false
-    }));
+    } ) );
   };
 
+  handleSelectedEvent = ( event ) => {
+    this.setState( {
+      selectedEvent: event,
+      isOpen: true
+    } )
+  }
+
+
   render() {
-    const { events, isOpen } = this.state;
+    const { events, isOpen, selectedEvent } = this.state;
     return (
       <div>
         <Grid>
           <Grid.Column width={10}>
-            <EventList events={events} />
+            <EventList events={events} selectedEvent={this.handleSelectedEvent} />
           </Grid.Column>
           <Grid.Column width={6}>
             <Button
               positive
               content="Create Event"
-              onClick={this.openFormHandler}
+              onClick={this.handleCreateFormOpen}
             />
             {isOpen && (
               <EventForm
-                cancelEventForm={this.openFormHandler}
+                cancelEventForm={this.handleFormCancel}
                 createEvent={this.handleCreateEvent}
               />
             )}
