@@ -1,14 +1,23 @@
-import React, { Component } from "react";
-import { Segment, Form, Button } from "semantic-ui-react";
+import React, { Component } from 'react';
+import { Segment, Form, Button } from 'semantic-ui-react';
 
 class EventForm extends Component {
   state = {
-    title: "",
-    date: "",
-    city: "",
-    venue: "",
-    hostedBy: ""
+    title: '',
+    date: '',
+    city: '',
+    venue: '',
+    hostedBy: ''
   };
+
+  componentDidMount() {
+    debugger;
+    if (this.props.selectedEvent !== null) {
+      this.setState({
+        ...this.props.selectedEvent
+      });
+    }
+  }
 
   submitDataHandler = event => {
     this.props.createEvent(this.state);
