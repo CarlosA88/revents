@@ -37,7 +37,6 @@ class EventDashboard extends Component {
   };
 
   handleSelectedEvent = event => {
-    debugger;
     this.setState({
       selectedEvent: event,
       isOpen: true
@@ -46,6 +45,7 @@ class EventDashboard extends Component {
 
   render() {
     const { events, isOpen, selectedEvent } = this.state;
+
     return (
       <div>
         <Grid>
@@ -63,6 +63,7 @@ class EventDashboard extends Component {
             />
             {isOpen && (
               <EventForm
+                key={selectedEvent ? selectedEvent.id : 0}
                 cancelEventForm={this.handleFormCancel}
                 createEvent={this.handleCreateEvent}
                 selectedEvent={selectedEvent}

@@ -11,7 +11,6 @@ class EventForm extends Component {
   };
 
   componentDidMount() {
-    debugger;
     if (this.props.selectedEvent !== null) {
       this.setState({
         ...this.props.selectedEvent
@@ -30,6 +29,7 @@ class EventForm extends Component {
   render() {
     const { cancelEventForm } = this.props;
     const { title, date, city, venue, hostedBy } = this.state;
+
     return (
       <Segment>
         <Form onSubmit={this.submitDataHandler} autoComplete="off">
