@@ -11,19 +11,24 @@ class EventForm extends Component {
   };
 
   componentDidMount() {
-    if (this.props.selectedEvent !== null) {
-      this.setState({
+    if ( this.props.selectedEvent !== null ) {
+      this.setState( {
         ...this.props.selectedEvent
-      });
+      } );
     }
+
   }
 
   submitDataHandler = event => {
-    this.props.createEvent(this.state);
+    debugger
+    this.props.createEvent( this.state );
+    // if(){
+
+    // }
   };
 
-  onChangeHandler = ({ target: { name, value } }) => {
-    this.setState({ [name]: value });
+  onChangeHandler = ( { target: { name, value } } ) => {
+    this.setState( { [name]: value } );
   };
 
   render() {
