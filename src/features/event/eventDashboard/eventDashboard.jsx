@@ -13,45 +13,53 @@ class EventDashboard extends Component {
   };
 
   handleCreateFormOpen = () => {
-    this.setState( {
+    this.setState({
       isOpen: true,
       selectedEvent: null
-    } );
+    });
   };
 
   handleFormCancel = () => {
-    this.setState( {
+    this.setState({
       isOpen: false
-    } );
+    });
   };
 
   handleCreateEvent = newEvent => {
     newEvent.id = cuid();
     newEvent.hostPhotoURL = '/assets/user.png';
 
-    this.setState( ( { events } ) => ( {
+    this.setState(({ events }) => ({
       events: [...events, newEvent],
       isOpen: false
-    } ) );
+    }));
   };
 
   handleSelectedEvent = event => {
-    this.setState( {
+    this.setState({
       selectedEvent: event,
       isOpen: true
-    } );
+    });
   };
 
-  handleUpdateEvent = ( updEvent ) => {
-    // let update = updEvent.findIndex( updEvent.id === this.state.events.id )
-    debugger
-    this.setState( ( { events } ) => ( {
-      events: events.map(event =>{
-if()
+  handleUpdateEvent = updEvent => {
+    this.setState(({ events }) => ({
+      events: events.map(event => {
+        if (event.id === updEvent.id) {
+          return { ...updEvent };
+        } else {
+          return event;
+        }
       }),
       isOpen: false
-    } ) );
-  }
+    }));
+  };
+
+  handleDeleteEvent = id => {
+    this.setState(({ events }) => ({
+      events: events.filter(event => event.id !== id)
+    }));
+  };
 
   render() {
     const { events, isOpen, selectedEvent } = this.state;
@@ -63,6 +71,7 @@ if()
             <EventList
               events={events}
               selectedEvent={this.handleSelectedEvent}
+              deleteEvent={this.handleDeleteEvent}
             />
           </Grid.Column>
           <Grid.Column width={6}>
