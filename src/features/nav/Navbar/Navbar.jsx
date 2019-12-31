@@ -9,10 +9,10 @@ class Navbar extends Component {
     Auth: false
   };
 
-  handleSingIn = () => this.setState({ Auth: true });
+  handleSingIn = () => this.setState( { Auth: true } );
   handleSingOut = () => {
-    this.setState({ Auth: false });
-    this.props.history.push('/events');
+    this.setState( { Auth: false } );
+    this.props.history.push( '/events' );
   };
 
   render() {
@@ -26,6 +26,7 @@ class Navbar extends Component {
           </Menu.Item>
           <Menu.Item name='Events' as={NavLink} to='/events' />
           <Menu.Item name='People' as={NavLink} to='/people' />
+          <Menu.Item name='Test' as={NavLink} to='/test' />
           <Menu.Item>
             <Button
               as={Link}
@@ -39,12 +40,12 @@ class Navbar extends Component {
           {Auth ? (
             <SingedInMenu singOut={this.handleSingOut} />
           ) : (
-            <SingedOutMenu singIn={this.handleSingIn} />
-          )}
+              <SingedOutMenu singIn={this.handleSingIn} />
+            )}
         </Container>
       </Menu>
     );
   }
 }
 
-export default withRouter(Navbar);
+export default withRouter( Navbar );
