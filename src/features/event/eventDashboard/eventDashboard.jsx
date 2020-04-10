@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Grid } from "semantic-ui-react";
 import EventList from "../EventList/EventList";
-import { createEvent, updateEvent, deleteEvent } from "../eventActions";
+import { deleteEvent } from "../eventActions";
 import { connect } from "react-redux";
 
 class EventDashboard extends Component {
@@ -37,8 +37,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  createEvent,
-  updateEvent,
   deleteEvent
 };
 
