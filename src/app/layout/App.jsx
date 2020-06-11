@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import Navbar from "../../features/nav/Navbar/Navbar";
 import { Container } from "semantic-ui-react";
+
 import EventDashboard from "../../features/event/EventDashboard/EventDashboard";
 import { Route, Switch, withRouter } from "react-router-dom";
 import HomePage from "./../../features/event/home/HomePage";
